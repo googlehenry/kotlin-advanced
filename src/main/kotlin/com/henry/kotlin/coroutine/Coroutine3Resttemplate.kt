@@ -21,10 +21,12 @@ fun main() {
                         throw Exception("a:has error")
                     }
                     if (isActive)  log("a:$id start")
+
                     restTemplate.getForObject("https://www.baidu.com", String::class.java)
                     if (isActive) log("a:$id ok")
                 }
             }
+            a.cancel()
             var b = async {
                 for (id in 0..2) {
                     log("b:$id start")
